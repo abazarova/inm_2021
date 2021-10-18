@@ -1,21 +1,16 @@
 import numpy as np
 
-#solve (4x^2 - 10x + 6 = 0)
-
-x = 0 # Initial Guess
+#solve Ax = b where A = [[1, 2], [3, 4]], b = [1, 1]
+A = np.array([[1, 2], [3, 3]])
+b = np.ones((2, 1))
+B = np.identity(2)
+x = np.zeros((2, 1)) # Initial Guess
+tau = 0.1
 for iteration in range(1, 101): # Setting iterations to 100
-    x_new = (4*x**2 + 6)/10      # Finding the new value
-    if abs(x_new - x) < 0.000001: # degree of accuracy condition
+    x_new = B @ x + tau * b      # Finding the new value
+    if np.linalg.norm(x_new - x) < 0.000001: # degree of accuracy condition
         break
     x = x_new                    # Assigns the value of x_new to x
-print('The root : %0.5f' % x_new)
-print('The number of iterations : %d' % iteration)
-x = 1.5     # Initial Guess
-for iteration in range(1,101):# Setting iterations to 100
-    x_new = (4*x**2 + 6)/10   # Finding the new value
-    if abs(x_new - x) < 0.000001: # degree of accuracy condition
-        break
-    x = x_new       # Assigns the value of x_new to x
-print('The root : %0.5f' % x_new)
+print('The root :',  x_new)
 print('The number of iterations : %d' % iteration)
 exit()
