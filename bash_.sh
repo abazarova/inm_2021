@@ -1,7 +1,7 @@
 #!/bin/bash
 
-files="simple_iteration.cpp"
-exe=simple
+files="simple_iteration.cpp main.cpp"
+exe=simple_iteration
 if [ -e $exe ]
 then
     rm $exe
